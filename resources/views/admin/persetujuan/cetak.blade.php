@@ -66,20 +66,37 @@
 
         <!-- ISI SURAT KHUSUS PER JENIS -->
         <div class="mb-4 text-justify" style="line-height: 1.8;">
-            @if(str_contains(strtolower($pengajuanSurat->jenis_surat), 'usaha'))
+            @php
+                $jenisLower = strtolower($pengajuanSurat->jenis_surat);
+            @endphp
+
+            @if(str_contains($jenisLower, 'usaha') || str_contains($jenisLower, 'sku'))
                 <p>Adalah benar-benar penduduk yang berdomisili di Desa Balangka, Kecamatan Sihapas Barumun, Kabupaten Padang Lawas.</p>
-                <p>Berdasarkan pengamatan yang telah kami lakukan memang benar yang bersangkutan mempunyai usaha / aktivitas ekonomi sebagaimana mestinya di wilayah Desa Balangka.</p>
-                <p>Adapun surat keterangan usaha ini dibuat guna melengkapi persyaratan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
-            @elseif(str_contains(strtolower($pengajuanSurat->jenis_surat), 'tidak mampu'))
+                <p>Berdasarkan pengamatan yang telah kami lakukan, memang benar yang bersangkutan mempunyai usaha / aktivitas ekonomi yang berlokasi dan berjalan di wilayah desa kami.</p>
+                <p>Adapun Surat Keterangan Usaha ini dibuat guna melengkapi persyaratan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
+            @elseif(str_contains($jenisLower, 'tidak mampu') || str_contains($jenisLower, 'sktm'))
                 <p>Adalah benar-benar warga penduduk Desa Balangka yang tergolong dalam keluarga kurang mampu / ekonomi lemah.</p>
-                <p>Sesuai pengamatan kami keluarga tersebut memerlukan bantuan administrasi untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
-            @elseif(str_contains(strtolower($pengajuanSurat->jenis_surat), 'nikah'))
-                <p>Adalah penduduk asli Desa Balangka, Kecamatan Sihapas Barumun dan sepanjang pengetahuan kami serta catatan pada kami memang benar yang bersangkutan mengajukan surat pengantar/keterangan nikah untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
+                <p>Sesuai pengamatan kami, yang bersangkutan bersedia dan memenuhi syarat untuk menerima bantuan/layanan administrasi guna keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
+            @elseif(str_contains($jenisLower, 'ktp'))
+                <p>Adalah benar-benar warga penduduk Desa Balangka yang mengajukan pengurusan / penerbitan / penggantian Kartu Tanda Penduduk Elektronik (KTP-el).</p>
+                <p>Surat Pengantar ini diterbitkan guna melengkapi persyaratan pengajuan KTP-el untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
+            @elseif(str_contains($jenisLower, 'kartu keluarga') || str_contains($jenisLower, 'kk'))
+                <p>Adalah benar-benar warga terdaftar di Desa Balangka yang mengajukan pengurusan / pembaruan data Kartu Keluarga (KK).</p>
+                <p>Surat Pengantar ini diterbitkan guna melengkapi persyaratan administrasi Kartu Keluarga untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
+            @elseif(str_contains($jenisLower, 'skck'))
+                <p>Adalah benar-benar warga penduduk Desa Balangka yang sepanjang pengamatan dan catatan pada kami berkelakuan baik serta tidak sedang tersangkut perkara kepolisian/pidana.</p>
+                <p>Surat Pengantar ini diterbitkan untuk melengkapi persyaratan pembuatan Surat Keterangan Catatan Kepolisian (SKCK) di Kepolisian untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
+            @elseif(str_contains($jenisLower, 'pindah'))
+                <p>Adalah benar-benar warga penduduk Desa Balangka yang mengajukan permohonan surat pengantar / keterangan perpindahan penduduk dari wilayah tempat tinggal saat ini.</p>
+                <p>Surat Keterangan Pindah ini diterbitkan guna melengkapi persyaratan perpindahan penduduk untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
+            @elseif(str_contains($jenisLower, 'kelahiran'))
+                <p>Adalah benar-benar terdaftar sebagai warga Desa Balangka yang memberikan keterangan atas peristiwa kelahiran anak dari pasangan keluarga terdaftar di desa kami.</p>
+                <p>Surat Keterangan Kelahiran ini diterbitkan guna melengkapi persyaratan administrasi kependudukan untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
             @else
-                <p>Adalah benar-benar penduduk yang berdomisili di Desa Balangka, Kecamatan Sihapas Barumun, Kabupaten Padang Lawas dan sudah tinggal di lingkungan desa kami.</p>
-                <p>Demikian surat keterangan ini kami berikan untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
+                <p>Adalah benar-benar penduduk yang berdomisili di Desa Balangka, Kecamatan Sihapas Barumun, Kabupaten Padang Lawas dan saat ini menetap di lingkungan desa kami.</p>
+                <p>Demikian Surat Keterangan Domisili ini diterbitkan guna melengkapi persyaratan untuk keperluan: <strong>{{ $pengajuanSurat->keperluan }}</strong>.</p>
             @endif
-            <p>Demikian surat keterangan ini kami keluarkan untuk dapat dipergunakan sebagaimana mestinya dan bagi yang berkepentingan menjadi bahan periksa adanya.</p>
+            <p>Demikian surat keterangan/pengantar ini kami keluarkan dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya bagi pihak yang berkepentingan.</p>
         </div>
 
         <!-- TANDA TANGAN -->

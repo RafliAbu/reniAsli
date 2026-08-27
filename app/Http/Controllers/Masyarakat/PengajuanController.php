@@ -15,8 +15,9 @@ class PengajuanController extends Controller
     public function create(): View
     {
         $jenisSurats = PengajuanSurat::JENIS_SURAT;
+        $persyaratanSurat = PengajuanSurat::PERSYARATAN_SURAT;
 
-        return view('masyarakat.pengajuan.create', compact('jenisSurats'));
+        return view('masyarakat.pengajuan.create', compact('jenisSurats', 'persyaratanSurat'));
     }
 
     public function store(Request $request): RedirectResponse

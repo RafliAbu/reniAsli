@@ -54,6 +54,14 @@
                         </select>
                     </div>
 
+                    <!-- Persyaratan Surat Info Card -->
+                    <div id="persyaratan-card" class="p-3 bg-primary-subtle border border-primary-subtle rounded-3 small d-none">
+                        <div class="fw-bold text-primary mb-1 d-flex align-items-center gap-1">
+                            <i class="bi bi-file-earmark-check-fill"></i> Persyaratan Dokumen:
+                        </div>
+                        <ul id="persyaratan-list" class="ps-3 mb-0 text-dark" style="line-height: 1.5;"></ul>
+                    </div>
+
                     <div>
                         <label for="nama_lengkap" class="form-label fw-semibold small">Nama Lengkap</label>
                         <input type="text" name="nama_lengkap" id="nama_lengkap" value="{{ old('nama_lengkap', auth()->user()->name ?? '') }}" class="form-control form-control-sm" placeholder="Masukkan nama lengkap Anda" required>
@@ -65,15 +73,15 @@
                     </div>
 
                     <div>
-                        <label class="form-label fw-semibold small">Upload Berkas Pendukung (Opsional)</label>
+                        <label class="form-label fw-semibold small">Upload Berkas Pendukung / Persyaratan</label>
                         <div class="border rounded-3 p-3 text-center bg-light">
                             <i class="bi bi-file-earmark-arrow-up display-6 text-primary d-block mb-1"></i>
                             <input type="file" name="file_berkas" id="file_berkas" class="d-none" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this)">
                             <label for="file_berkas" class="btn btn-sm btn-outline-primary px-3 mb-1">
-                                <i class="bi bi-upload me-1"></i> Pilih Berkas
+                                <i class="bi bi-upload me-1"></i> Pilih Berkas Lampiran
                             </label>
                             <div id="file-name-display" class="small text-success fw-semibold mt-1"></div>
-                            <div class="small text-secondary" style="font-size: 0.72rem;">Format: PDF, JPG, PNG (Maks. 5 MB)</div>
+                            <div class="small text-secondary" style="font-size: 0.72rem;">Unggah KTP / KK / Surat Pengantar / Berkas Persyaratan (PDF, JPG, PNG - Maks. 5 MB)</div>
                         </div>
                     </div>
 
@@ -103,6 +111,33 @@
     </div>
 
     <script>
+        const persyaratanData = @json($persyaratanSurat ?? \App\Models\PengajuanSurat::PERSYARATAN_SURAT);
+
+        const jenisSelect = document.getElementById('jenis_surat');
+        const persyaratanCard = document.getElementById('persyaratan-card');
+        const persyaratanList = document.getElementById('persyaratan-list');
+
+        function updatePersyaratan() {
+            const selected = jenisSelect.value;
+            if (selected && persyaratanData[selected]) {
+                persyaratanList.innerHTML = '';
+                persyaratanData[selected].forEach(function(item) {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    persyaratanList.appendChild(li);
+                });
+                persyaratanCard.classList.remove('d-none');
+            } else {
+                persyaratanCard.classList.add('d-none');
+            }
+        }
+
+        jenisSelect.addEventListener('change', updatePersyaratan);
+
+        if (jenisSelect.value) {
+            updatePersyaratan();
+        }
+
         function showFileName(input) {
             const display = document.getElementById('file-name-display');
             if (input.files && input.files[0]) {

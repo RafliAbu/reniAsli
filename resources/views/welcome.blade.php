@@ -664,51 +664,135 @@
         <div class="container py-4">
             <div class="text-center max-w-700 mx-auto mb-5">
                 <span class="badge bg-primary-subtle text-primary fw-bold px-3 py-1.5 rounded-pill mb-2">Layanan Administrasi</span>
-                <h2 class="fw-bold h3 mb-2">Layanan Surat Online</h2>
-                <p class="text-secondary mb-0">Masyarakat dapat mengajukan berbagai dokumen administrasi desa secara cepat online & mendapatkan notifikasi email saat surat selesai.</p>
+                <h2 class="fw-bold h3 mb-2">Layanan & Persyaratan Surat Online</h2>
+                <p class="text-secondary mb-0">Masyarakat dapat mengajukan berbagai dokumen administrasi desa secara cepat online dengan melengkapi persyaratan berikut.</p>
             </div>
 
+            @php
+                $layananSuratList = [
+                    [
+                        'judul' => '1. Surat Keterangan Domisili',
+                        'icon' => 'bi-geo-alt-fill',
+                        'color' => 'primary',
+                        'syarat' => [
+                            'Fotokopi KTP pemohon.',
+                            'Fotokopi Kartu Keluarga (KK).',
+                            'Surat pengantar RT/RW (jika diperlukan).',
+                            'Mengisi formulir permohonan.',
+                            'Memiliki domisili di Kelurahan Hanopan Sibatu.',
+                        ]
+                    ],
+                    [
+                        'judul' => '2. Surat Keterangan Usaha (SKU)',
+                        'icon' => 'bi-shop',
+                        'color' => 'success',
+                        'syarat' => [
+                            'Fotokopi KTP.',
+                            'Fotokopi KK.',
+                            'Surat pengantar RT/RW (jika diperlukan).',
+                            'Pas foto ukuran 3×4 (1 lembar).',
+                            'Mengisi formulir permohonan.',
+                            'Memiliki usaha yang berlokasi di Kelurahan Hanopan Sibatu.',
+                        ]
+                    ],
+                    [
+                        'judul' => '3. Surat Keterangan Tidak Mampu (SKTM)',
+                        'icon' => 'bi-file-earmark-medical',
+                        'color' => 'warning',
+                        'syarat' => [
+                            'Fotokopi KTP.',
+                            'Fotokopi KK.',
+                            'Surat pengantar RT/RW (jika diperlukan).',
+                            'Mengisi formulir permohonan.',
+                            'Bersedia dilakukan verifikasi apabila diperlukan.',
+                        ]
+                    ],
+                    [
+                        'judul' => '4. Pengajuan KTP-el',
+                        'icon' => 'bi-card-heading',
+                        'color' => 'info',
+                        'syarat' => [
+                            'Fotokopi KK.',
+                            'KTP lama (untuk penggantian).',
+                            'Surat kehilangan dari Kepolisian (jika KTP hilang).',
+                            'Surat pindah (bagi penduduk pindahan).',
+                            'Mengisi formulir permohonan.',
+                        ]
+                    ],
+                    [
+                        'judul' => '5. Pengajuan Kartu Keluarga (KK)',
+                        'icon' => 'bi-people-fill',
+                        'color' => 'primary',
+                        'syarat' => [
+                            'Fotokopi KTP anggota keluarga.',
+                            'KK lama (untuk perubahan data).',
+                            'Buku Nikah/Akta Perkawinan (jika diperlukan).',
+                            'Surat Kelahiran (untuk penambahan anggota keluarga).',
+                            'Surat Pindah (bagi penduduk pindahan).',
+                            'Mengisi formulir permohonan.',
+                        ]
+                    ],
+                    [
+                        'judul' => '6. Surat Pengantar SKCK',
+                        'icon' => 'bi-shield-check',
+                        'color' => 'danger',
+                        'syarat' => [
+                            'Fotokopi KTP.',
+                            'Fotokopi KK.',
+                            'Pas foto 4×6 sesuai ketentuan Kepolisian.',
+                            'Mengisi formulir permohonan.',
+                            'Surat pengantar RT/RW (jika diperlukan).',
+                        ]
+                    ],
+                    [
+                        'judul' => '7. Surat Keterangan Pindah',
+                        'icon' => 'bi-box-arrow-right',
+                        'color' => 'secondary',
+                        'syarat' => [
+                            'Fotokopi KTP.',
+                            'Fotokopi KK.',
+                            'KTP dan KK asli.',
+                            'Mengisi formulir perpindahan penduduk.',
+                            'Surat pengantar RT/RW (jika diperlukan).',
+                        ]
+                    ],
+                    [
+                        'judul' => '8. Surat Keterangan Kelahiran',
+                        'icon' => 'bi-person-plus-fill',
+                        'color' => 'success',
+                        'syarat' => [
+                            'Fotokopi KTP kedua orang tua.',
+                            'Fotokopi KK.',
+                            'Fotokopi Buku Nikah/Akta Perkawinan orang tua.',
+                            'Surat keterangan lahir dari Rumah Sakit/Bidan/Puskesmas.',
+                            'Mengisi formulir permohonan.',
+                        ]
+                    ],
+                ];
+            @endphp
+
             <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon bg-primary-subtle text-primary">
-                            <i class="bi bi-file-earmark-person"></i>
+                @foreach($layananSuratList as $item)
+                    <div class="col-md-6 col-lg-3">
+                        <div class="service-card d-flex flex-column h-100 p-4 border rounded-3 bg-white shadow-sm">
+                            <div class="service-icon bg-{{ $item['color'] }}-subtle text-{{ $item['color'] }} mb-3">
+                                <i class="bi {{ $item['icon'] }}"></i>
+                            </div>
+                            <h3 class="h6 fw-bold mb-3 text-dark">{{ $item['judul'] }}</h3>
+                            <div class="small text-secondary mb-3 flex-grow-1">
+                                <div class="fw-semibold text-dark mb-1">Persyaratan:</div>
+                                <ul class="ps-3 mb-0 style-paragraph">
+                                    @foreach($item['syarat'] as $s)
+                                        <li class="mb-1">{{ $s }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <a href="{{ route('login') }}" class="btn btn-sm btn-outline-{{ $item['color'] }} w-100 fw-semibold mt-auto">
+                                Ajukan Surat <i class="bi bi-arrow-right me-1"></i>
+                            </a>
                         </div>
-                        <h3 class="h5 fw-bold mb-2">Surat Domisili</h3>
-                        <p class="text-secondary small mb-3">Surat keterangan tempat tinggal resmi bagi warga Desa Balangka.</p>
-                        <a href="{{ route('login') }}" class="text-primary fw-semibold text-decoration-none small">Ajukan Sekarang &rarr;</a>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon bg-success-subtle text-success">
-                            <i class="bi bi-heart"></i>
-                        </div>
-                        <h3 class="h5 fw-bold mb-2">Surat Ket. Nikah</h3>
-                        <p class="text-secondary small mb-3">Dokumen pengantar nikah resmi dari Kantor Desa Balangka.</p>
-                        <a href="{{ route('login') }}" class="text-primary fw-semibold text-decoration-none small">Ajukan Sekarang &rarr;</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon bg-warning-subtle text-warning">
-                            <i class="bi bi-file-earmark-text"></i>
-                        </div>
-                        <h3 class="h5 fw-bold mb-2">Surat Tidak Mampu</h3>
-                        <p class="text-secondary small mb-3">Surat rujukan persyaratan bantuan sosial atau medis sekolah/beasiswa.</p>
-                        <a href="{{ route('login') }}" class="text-primary fw-semibold text-decoration-none small">Ajukan Sekarang &rarr;</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="service-card">
-                        <div class="service-icon bg-info-subtle text-info">
-                            <i class="bi bi-shop"></i>
-                        </div>
-                        <h3 class="h5 fw-bold mb-2">Surat Ket. Usaha</h3>
-                        <p class="text-secondary small mb-3">Keterangan resmi bagi warga yang memiliki usaha produktif di desa.</p>
-                        <a href="{{ route('login') }}" class="text-primary fw-semibold text-decoration-none small">Ajukan Sekarang &rarr;</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

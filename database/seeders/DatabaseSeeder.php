@@ -86,7 +86,16 @@ class DatabaseSeeder extends Seeder
             ['nomor_surat' => '470/001/DB-SB/VII/2026'],
             [
                 'jenis_surat' => 'Surat Keterangan Domisili',
-                'persyaratan_surat' => 'Fotokopi KTP, fotokopi KK, dan surat pengantar RT.',
+                'persyaratan_surat' => "1. Fotokopi KTP pemohon.\n2. Fotokopi Kartu Keluarga (KK).\n3. Surat pengantar RT/RW (jika diperlukan).\n4. Mengisi formulir permohonan.\n5. Memiliki domisili di Kelurahan Hanopan Sibatu.",
+                'tanggal_surat' => now()->toDateString(),
+            ]
+        );
+
+        ArsipSurat::updateOrCreate(
+            ['nomor_surat' => '503/002/DB-SB/VII/2026'],
+            [
+                'jenis_surat' => 'Surat Keterangan Usaha (SKU)',
+                'persyaratan_surat' => "1. Fotokopi KTP.\n2. Fotokopi KK.\n3. Surat pengantar RT/RW (jika diperlukan).\n4. Pas foto ukuran 3×4 (1 lembar).\n5. Mengisi formulir permohonan.\n6. Memiliki usaha yang berlokasi di Kelurahan Hanopan Sibatu.",
                 'tanggal_surat' => now()->toDateString(),
             ]
         );

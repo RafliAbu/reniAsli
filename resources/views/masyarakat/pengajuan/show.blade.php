@@ -35,6 +35,21 @@
                 <div class="text-secondary small fw-semibold mb-1">Keperluan Pengajuan Surat</div>
                 <div class="p-3 bg-light rounded-3 border text-dark">{{ $pengajuanSurat->keperluan }}</div>
             </div>
+            @php
+                $persyaratanList = \App\Models\PengajuanSurat::PERSYARATAN_SURAT[$pengajuanSurat->jenis_surat] ?? null;
+            @endphp
+            @if($persyaratanList)
+                <div class="col-12">
+                    <div class="text-secondary small fw-semibold mb-1">Persyaratan Layanan:</div>
+                    <div class="p-3 bg-light rounded-3 border small">
+                        <ul class="ps-3 mb-0 style-paragraph">
+                            @foreach($persyaratanList as $syarat)
+                                <li>{{ $syarat }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
             <div class="col-12">
                 <div class="text-secondary small fw-semibold mb-1">Berkas Lampiran Pendukung</div>
                 @if ($pengajuanSurat->file_berkas)
