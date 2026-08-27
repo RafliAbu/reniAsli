@@ -341,7 +341,9 @@
     <div class="app-shell">
         <aside class="sidebar">
             <div class="brand">
-                <div class="brand-logo">DB</div>
+                <div class="brand-logo bg-transparent p-0 overflow-hidden">
+                    <img src="{{ asset('images/logo_padang_lawas.jpg') }}" alt="Logo Padang Lawas" style="width: 40px; height: 40px; object-fit: contain;">
+                </div>
                 <div class="brand-title">Desa Balangka<br>Kecamatan Sihapas Barumun</div>
             </div>
 

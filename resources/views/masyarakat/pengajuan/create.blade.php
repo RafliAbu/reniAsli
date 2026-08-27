@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center gap-2 justify-content-center">
-                    <div class="rounded-circle bg-primary text-white p-1 d-grid place-items-center" style="width:28px; height:28px;"><i class="bi bi-building small"></i></div>
+                    <img src="{{ asset('images/logo_padang_lawas.jpg') }}" alt="Logo Padang Lawas" style="width: 28px; height: 28px; object-fit: contain;">
                     <div class="text-start">
                         <div class="fw-bold small lh-1">Desa Balangka</div>
                         <div class="small text-secondary lh-1" style="font-size: 0.72rem;">Kec. Sihapas Barumun</div>

@@ -175,8 +175,8 @@
     <nav class="navbar navbar-expand-lg portal-navbar sticky-top py-3">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-3" href="{{ route('portal') }}">
-                <div class="bg-primary text-white rounded-3 d-grid place-items-center fw-bold" style="width: 44px; height: 44px; font-size: 1.25rem;">
-                    DB
+                <div class="d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                    <img src="{{ asset('images/logo_padang_lawas.jpg') }}" alt="Logo Padang Lawas" class="img-fluid" style="max-height: 48px; object-fit: contain;">
                 </div>
                 <div>
                     <div class="fw-bold fs-6 lh-1 text-dark">Desa Balangka</div>
@@ -803,7 +803,9 @@
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="d-flex align-items-center gap-2 mb-3">
-                        <div class="bg-primary text-white rounded-2 d-grid place-items-center fw-bold" style="width: 36px; height: 36px;">DB</div>
+                        <div class="d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+                            <img src="{{ asset('images/logo_padang_lawas.jpg') }}" alt="Logo Padang Lawas" class="img-fluid" style="max-height: 38px; object-fit: contain;">
+                        </div>
                         <span class="fw-bold fs-5">Desa Balangka</span>
                     </div>
                     <p class="text-white-50 small mb-2" style="max-width: 440px;">

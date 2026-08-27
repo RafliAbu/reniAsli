@@ -4,10 +4,9 @@
 
 @section('content')
     <div class="text-center mb-4">
-        <h1 class="h3 fw-bold mb-2">Login</h1>
-        <div class="user-avatar-icon">
-            <i class="bi bi-person"></i>
-        </div>
+        <img src="{{ asset('images/logo_padang_lawas.jpg') }}" alt="Logo Padang Lawas" class="mb-3" style="height: 70px; object-fit: contain;">
+        <h1 class="h4 fw-bold mb-1">Portal Desa Balangka</h1>
+        <p class="text-secondary small">Kecamatan Sihapas Barumun, Kab. Padang Lawas</p>
     </div>
 
     <!-- Demo Accounts Quick Reference Box -->

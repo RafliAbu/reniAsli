@@ -14,7 +14,7 @@
 <body class="d-flex align-items-center justify-content-center min-vh-100 py-4">
     <div class="container" style="max-width: 480px;">
         <div class="text-center mb-4">
-            <div class="bg-primary text-white rounded-3 d-inline-flex align-items-center justify-content-center fw-bold fs-3 mb-2" style="width: 56px; height: 56px;">DB</div>
+            <img src="{{ asset('images/logo_padang_lawas.jpg') }}" alt="Logo Padang Lawas" class="mb-2" style="height: 64px; object-fit: contain;">
             <h1 class="h4 fw-bold mb-1">Verifikasi Email Anda</h1>
             <p class="text-secondary small">Masukkan 6-digit kode verifikasi yang telah dikirim ke email <strong>{{ $email }}</strong></p>
         </div>

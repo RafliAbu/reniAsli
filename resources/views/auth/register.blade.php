@@ -4,10 +4,9 @@
 
 @section('content')
     <div class="text-center mb-4">
-        <h1 class="h3 fw-bold mb-2">Registrasi Akun</h1>
-        <div class="user-avatar-icon">
-            <i class="bi bi-person"></i>
-        </div>
+        <img src="{{ asset('images/logo_padang_lawas.jpg') }}" alt="Logo Padang Lawas" class="mb-3" style="height: 64px; object-fit: contain;">
+        <h1 class="h4 fw-bold mb-1">Registrasi Akun Warga</h1>
+        <p class="text-secondary small">Desa Balangka, Kecamatan Sihapas Barumun</p>
     </div>
 
     <form action="{{ route('register.store') }}" method="POST" class="d-grid gap-3">
