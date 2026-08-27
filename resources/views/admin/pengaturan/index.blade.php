@@ -82,7 +82,7 @@
 
                 <div class="row g-4">
                     <!-- Foto Kepala Desa -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-3">
                         <div class="border rounded p-3 text-center bg-light">
                             <label class="form-label fw-bold d-block mb-2">Foto Kepala Desa</label>
                             <div class="mb-3 bg-white p-2 rounded border" style="height: 180px; display: grid; place-items: center; overflow: hidden;">
@@ -97,8 +97,26 @@
                         </div>
                     </div>
 
+                    <!-- Tanda Tangan Digital Kepala Desa -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="border rounded p-3 text-center bg-light">
+                            <label class="form-label fw-bold d-block mb-2">Tanda Tangan Digital</label>
+                            <div class="mb-3 bg-white p-2 rounded border" style="height: 180px; display: grid; place-items: center; overflow: hidden;">
+                                @if(!empty($pengaturan->foto_ttd_kades))
+                                    <img src="{{ asset('storage/' . $pengaturan->foto_ttd_kades) }}" alt="Tanda Tangan Kepala Desa" class="img-fluid rounded" style="max-height: 100%; object-fit: contain;">
+                                @elseif(file_exists(public_path('images/ttd_kades.png')))
+                                    <img src="{{ asset('images/ttd_kades.png') }}" alt="Tanda Tangan Kepala Desa" class="img-fluid rounded" style="max-height: 100%; object-fit: contain;">
+                                @else
+                                    <i class="bi bi-pen fs-1 text-muted"></i>
+                                @endif
+                            </div>
+                            <input type="file" name="foto_ttd_kades" class="form-control form-control-sm" accept="image/*">
+                            <div class="form-text small">Format PNG transparan</div>
+                        </div>
+                    </div>
+
                     <!-- Foto Struktur Organisasi -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-3">
                         <div class="border rounded p-3 text-center bg-light">
                             <label class="form-label fw-bold d-block mb-2">Foto Tabel Struktur Organisasi</label>
                             <div class="mb-3 bg-white p-2 rounded border" style="height: 180px; display: grid; place-items: center; overflow: hidden;">
@@ -114,7 +132,7 @@
                     </div>
 
                     <!-- Foto Sampul Profil -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-3">
                         <div class="border rounded p-3 text-center bg-light">
                             <label class="form-label fw-bold d-block mb-2">Foto Banner Sampul Desa</label>
                             <div class="mb-3 bg-white p-2 rounded border" style="height: 180px; display: grid; place-items: center; overflow: hidden;">

@@ -52,6 +52,7 @@ class PengaturanController extends Controller
             'visi' => ['nullable', 'string'],
             'misi_text' => ['nullable', 'string'],
             'foto_kepala_desa' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'],
+            'foto_ttd_kades' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'],
             'foto_profil_desa' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'],
             'foto_struktur' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'],
         ]);
@@ -69,6 +70,13 @@ class PengaturanController extends Controller
                 Storage::disk('public')->delete($pengaturan->foto_kepala_desa);
             }
             $data['foto_kepala_desa'] = $request->file('foto_kepala_desa')->store('pengaturan', 'public');
+        }
+
+        if ($request->hasFile('foto_ttd_kades')) {
+            if ($pengaturan->foto_ttd_kades && Storage::disk('public')->exists($pengaturan->foto_ttd_kades)) {
+                Storage::disk('public')->delete($pengaturan->foto_ttd_kades);
+            }
+            $data['foto_ttd_kades'] = $request->file('foto_ttd_kades')->store('pengaturan', 'public');
         }
 
         if ($request->hasFile('foto_profil_desa')) {

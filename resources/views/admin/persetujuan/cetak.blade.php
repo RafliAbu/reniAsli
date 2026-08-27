@@ -83,18 +83,26 @@
         </div>
 
         <!-- TANDA TANGAN -->
+        @php
+            $pengaturan = $pengaturan ?? \App\Models\Pengaturan::first();
+            $ttdUrl = !empty($pengaturan?->foto_ttd_kades) 
+                ? asset('storage/' . $pengaturan->foto_ttd_kades) 
+                : asset('images/ttd_kades.png');
+        @endphp
         <div class="row mt-5 pt-3">
             <div class="col-6 text-center">
                 <br>
-                <p class="mb-5">Pemohon,</p>
-                <br><br>
+                <p class="mb-4">Pemohon,</p>
+                <div style="height: 85px;"></div>
                 <p class="fw-bold text-uppercase text-decoration-underline m-0">{{ $pengajuanSurat->nama_lengkap }}</p>
             </div>
-            <div class="col-6 text-center">
+            <div class="col-6 text-center position-relative">
                 <p class="m-0">Balangka, {{ $pengajuanSurat->tanggal_pengajuan ? $pengajuanSurat->tanggal_pengajuan->translatedFormat('d F Y') : date('d F Y') }}</p>
-                <p class="mb-5">Kepala Desa Balangka,</p>
-                <br><br>
-                <p class="fw-bold text-uppercase text-decoration-underline m-0">MARABAIK HARAHAP</p>
+                <p class="mb-1">Kepala Desa Balangka,</p>
+                <div class="d-flex justify-content-center align-items-center my-1" style="height: 85px;">
+                    <img src="{{ $ttdUrl }}" alt="Tanda Tangan Kepala Desa" style="max-height: 85px; max-width: 220px; object-fit: contain;">
+                </div>
+                <p class="fw-bold text-uppercase text-decoration-underline m-0">{{ $pengaturan->nama_kepala_desa ?? 'MARABAIK HARAHAP' }}</p>
             </div>
         </div>
     </div>

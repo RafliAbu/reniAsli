@@ -19,6 +19,7 @@ class Pengaturan extends Model
         'misi',
         'nama_kepala_desa',
         'foto_kepala_desa',
+        'foto_ttd_kades',
         'foto_profil_desa',
         'foto_struktur',
     ];
